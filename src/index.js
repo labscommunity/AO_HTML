@@ -9,7 +9,7 @@ const { dryrun } = connect({
 async function getWebsite(processId) {
   const result = await dryrun({
     process: processId,
-    data: 'getWebsite',  
+    data: 'Get-Frame',  
   });
   return result.Messages[0]
 }
