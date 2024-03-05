@@ -18,6 +18,9 @@ async function getResult(messageId, processId) {
 }
 
 
+const processId = '9yyPnCmMJjIZ3WcgS1NhL0mbT6JbEKxSfnVhkhwI6oM'
+const processResponse = await getResult('9yyPnCmMJjIZ3WcgS1NhL0mbT6JbEKxSfnVhkhwI6oM', processId)
+console.log(processResponse)
 
 const resultBox = document.getElementById('body')
 resultBox.textContent = 123;
