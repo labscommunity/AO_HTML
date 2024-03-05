@@ -1,0 +1,12 @@
+{
+  "name": "ao_html",
+  "type": "module",
+  "scripts": {
+    "build": "npx parcel build src/ao.html",
+    "dev": "npm run build && npx parcel src/ao.html"
+  },
+  "dependencies": {
+    "@permaweb/aoconnect": "^0.0.44",
+    "parcel": "^2.12.0"
+  }
+}
