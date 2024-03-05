@@ -1,26 +1,27 @@
 import { connect } from "@permaweb/aoconnect";
 
-
-const { spawn, message, results } = connect({
+const { dryrun } = connect({
   MU_URL: "https://ao-mu-1.onrender.com",
   CU_URL: "https://ao-cu-1.onrender.com",
   GATEWAY_URL: "https://g8way.io",
 });
 
-
-async function getResult(messageId, processId) {
-  const { Output, Messages, Spawns, Error } = await results({
-    message: messageId,
+async function getWebsite(processId) {
+  const result = await dryrun({
     process: processId,
+    data: 'getWebsite',  
   });
-
-  return { Output, Messages, Spawns, Error }
+  return result.Messages[0]
 }
 
 
-const processId = '9yyPnCmMJjIZ3WcgS1NhL0mbT6JbEKxSfnVhkhwI6oM'
-const processResponse = await getResult('9yyPnCmMJjIZ3WcgS1NhL0mbT6JbEKxSfnVhkhwI6oM', processId)
-console.log(processResponse)
+(async () => {
+  const processId = '9yyPnCmMJjIZ3WcgS1NhL0mbT6JbEKxSfnVhkhwI6oM';
+  const processResponse = await getWebsite(processId);
 
-const resultBox = document.getElementById('body')
-resultBox.textContent = 123;
+  const website = await fetch(`https://arweave.net/${processResponse.Data}/data`)
+  const websiteData = await website.text();
+
+  document.getElementById('body').innerHTML = websiteData;
+})();
+
