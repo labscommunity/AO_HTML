@@ -20,6 +20,7 @@ async function getWebsite(processId) {
   const processId = 'xCbRW3GKUqkTs2dPfTbE-09x4zbYqh6FaiUfaBo0TB0';
   const processResponse = await getWebsite(processId);
 
+  // TODO: get correct tx id return type from process
   console.log(processResponse)
 
   const website = await fetch(`https://arweave.net/${processResponse.Data}/data`)
