@@ -11,13 +11,16 @@ async function getWebsite(processId) {
     process: processId,
     data: 'Get-Frame',  
   });
+  console.log(result)
   return result.Messages[0]
 }
 
 
 (async () => {
-  const processId = '9yyPnCmMJjIZ3WcgS1NhL0mbT6JbEKxSfnVhkhwI6oM';
+  const processId = 'xCbRW3GKUqkTs2dPfTbE-09x4zbYqh6FaiUfaBo0TB0';
   const processResponse = await getWebsite(processId);
+
+  console.log(processResponse)
 
   const website = await fetch(`https://arweave.net/${processResponse.Data}/data`)
   const websiteData = await website.text();
